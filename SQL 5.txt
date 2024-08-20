@@ -1,0 +1,39 @@
+1.	List all the Canadian cities and their populations
+SELECT City, Population 
+FROM north_american_cities -- 
+Select the fields "City" and "Population" 
+from the table "north_american_cities"
+WHERE Country LIKE "Canada"; -- Condition: The country is "Canada"
+2.	Order all the cities in the United States by their latitude from north to south
+SELECT City, Latitude 
+FROM north_american_cities -- 
+Select the fields "City" and "Latitude" 
+from the table "north_american_cities"
+WHERE Country LIKE "United States" -- 
+Condition: The country is "United States"
+ORDER BY Latitude DESC; -- 
+Order by latitude in descending order 
+(the higher the latitude, the farther north the city is)
+3.	List all the cities west of Chicago, ordered from west to east
+SELECT City from north_american_cities -- 
+Select the field "City" from the table "north_american_cities"
+WHERE Longitude < 	-87.629798 -- 
+The longitude is less than -87.629798 (Chicago’s longitude)
+ORDER BY Longitude; -- Order by longitude
+4.	List the two largest cities in Mexico (by population)
+SELECT City from north_american_cities -- 
+Select the field "City" from the table "north_american_cities"
+WHERE Country LIKE "Mexico" -- 
+Condition: The cities are in the country "Mexico"
+ORDER BY Population DESC -- 
+Order by population in descending order
+LIMIT 2;
+5.	List the third and fourth largest cities (by population in the United States)
+SELECT City from north_american_cities -- 
+Select the field "City" from the table "north_american_cities"
+WHERE Country LIKE "United States" -- 
+Condition: The cities are in the country "United States"
+ORDER BY Population DESC -- 
+Order by population in descending order
+LIMIT 2 OFFSET 2; -- 
+Limit the results to two cities that come after the first two results
