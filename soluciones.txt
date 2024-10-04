@@ -1,0 +1,83 @@
+Sergio Alberto Alvarez Montemayor
+
+#######################################################################################################################################
+# Teoría
+
+1. 
+# b) Especifica el mensaje del commit directamente desde la línea de comandos.
+
+2. 
+# a) Como excepciones o casos avanzados que van más allá de las primeras tres formas normales.
+
+3. 
+# Los grupos repetidos se eliminan en la Primera Forma Normal (1NF).
+
+4. 
+# La cláusula WHERE filtra filas antes de las agregaciones y se aplica a columnas individuales, mientras que HAVING filtra después de las agregaciones y se usa con funciones de agregación como SUM() o COUNT().
+
+5.
+# c) FROM -> WHERE -> SELECT -> ORDER BY
+
+# Práctica
+
+1.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT 
+    nombre_materia, 
+    AVG(calificacion) AS promedio_calificacion
+FROM 
+    calificaciones
+WHERE 
+    calificacion IS NOT NULL
+GROUP BY 
+    nombre_materia
+ORDER BY 
+    promedio_calificacion DESC;
+
+```
+
+2.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT 
+    a.nombre, 
+    a.apellido
+FROM 
+    alumnos a
+JOIN 
+    calificaciones c ON a.expediente = c.expediente
+WHERE 
+    c.calificacion IS NOT NULL
+GROUP BY 
+    a.nombre, a.apellido
+ORDER BY 
+    a.apellido;
+
+```
+
+3.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT 
+    a.nombre, 
+    a.apellido, 
+    MAX(c.calificacion) AS calificacion_maxima
+FROM 
+    alumnos a
+JOIN 
+    calificaciones c ON a.expediente = c.expediente
+WHERE 
+    c.calificacion IS NOT NULL
+GROUP BY 
+    a.nombre, a.apellido
+ORDER BY 
+    calificacion_maxima DESC;
+
+```
